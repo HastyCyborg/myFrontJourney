@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css grid challenge 2</title>
+    <style>
+        .grid-container{
+            display: grid;
+            grid-template-columns: 1fr 5fr 1fr;
+            height: 100%;
+            grid-gap: 13px;
+        }
+
+        .content{
+            background-color: rgb(255, 174, 0);
+            padding: 15px;
+            font-size: 24px;
+        }
+
+        .a1{
+            grid-row-start: 1;
+            grid-row-end: 8;
+        }
+
+        .a2{
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 2;
+            grid-column-end: 4;
+        }
+
+        .a4{
+            grid-row-start: 7;
+            grid-row-end: 8;
+            grid-column-start: 2;
+            grid-column-end: 4;
+        }
+
+        .a3{
+            grid-row-start: 2;
+            grid-row-end: 7;
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+
+        .a5{
+            grid-row-start: 2;
+            grid-row-end: 7;
+            grid-column-start: 3;
+            grid-column-end: 4;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div class="content a1">Nav</div>
+        <div class="content a2">Headder</div>
+        <div class="content a3">Article</div>
+        <div class="content a4">Footer</div>
+        <div class="content a5">Ads</div>
+    </div>
+</body>
+</html>
