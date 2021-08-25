@@ -14,18 +14,102 @@
         <span id="player-score">0</span>:<span id="cpu-score">0</span>        
     </div>
 
-    <div class="message">
-        Message Goes Here
-        
+    <div class="message" id="message">
+        Let's Start        
     </div>
 
     <div class="control-handles">
-        <img src="res/rock.jpg" alt="STONE">
-        <img src="res/paper.jpg" alt="PAPER">
-        <img src="res/scissors.jpg" alt="SCISSORS">
+        <img src="res/rock.jpg" alt="STONE" onclick="stone()">
+        <img src="res/paper.jpg" alt="PAPER" onclick="paper()">
+        <img src="res/scissors.jpg" alt="SCISSORS" onclick="scissor()">
     </div>
 
+    <div class="comp-move" id="comp-move">
+        Comp's Move will be displayed here
+    </div>
 
-    
 </body>
+<script>
+    function winner(name){
+        if(name=='tie'){
+            document.getElementById("message").innerHTML="It's a Tie";
+        }
+        else if(name=='plyr'){
+            document.getElementById("message").innerHTML="You Won!";
+            temp=Number(document.getElementById("player-score").innerHTML);
+            temp+=1;
+            document.getElementById("player-score").innerHTML=temp;
+        }
+        else if(name=='comp'){
+            document.getElementById("message").innerHTML="You Lost!";
+            temp=Number(document.getElementById("cpu-score").innerHTML);
+            temp+=1;
+            document.getElementById("cpu-score").innerHTML=temp;
+        }
+    }
+
+    function evaluateGame(plyr,comp){
+        if(plyr==comp){
+            // tie
+            winner('tie');
+        }
+        else if(plyr=='stone' && comp=='paper'){
+            // comp wins
+            winner('comp');
+        }
+        else if(plyr=='paper' && comp=='stone'){
+            // plyr wins
+            winner('plyr');
+        }
+        else if(plyr=='stone' && comp=='scissors'){
+            // plyr wins
+            winner('plyr');
+        }
+        else if(plyr=='scissors' && comp=='stone'){
+            // comp wins
+            winner('comp');
+        }
+        else if(plyr=='scissors' && comp=='paper'){
+            // plyr wins
+            winner('plyr');
+        }
+        else if(plyr=='paper' && comp=='scissors'){
+            // comp wins
+            winner('comp');
+        }
+    }
+
+    function cpuchoose(){
+        var temp = Math.floor(Math.random()*3);
+        console.log(temp);
+        if(temp==0){
+            document.getElementById("comp-move").innerHTML="I chose Rock"
+            return 'stone';
+        }
+        else if(temp==1){
+            document.getElementById("comp-move").innerHTML="I chose Paper"
+            return 'paper';
+        }
+        else if(temp==2){
+            document.getElementById("comp-move").innerHTML="I chose Scissors"
+            return 'scissors';
+        }
+    }
+    var plyr,comp;
+    function stone(){
+        plyr='stone';
+        comp = cpuchoose();
+        evaluateGame(plyr,comp);
+    }
+    function paper(){
+        plyr='paper';
+        comp = cpuchoose();
+        evaluateGame(plyr,comp);
+    }
+    function scissor(){
+        plyr='scissors';
+        comp = cpuchoose();
+        evaluateGame(plyr,comp);
+    }
+</script>
 </html>
