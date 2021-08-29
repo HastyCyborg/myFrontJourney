@@ -71,7 +71,7 @@ img:hover{
     opacity: 0.3;
 }
 
-.comp-move{
+#comp-move{
     color: white;
     text-align: center;
     margin-top: 20px;
