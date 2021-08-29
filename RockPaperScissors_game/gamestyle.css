@@ -68,5 +68,22 @@ img{
 }
 
 img:hover{
-    opacity: 0.85;
+    opacity: 0.3;
+}
+
+.comp-move{
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
+@media only screen and (max-width: 400px) {
+    .score-card{
+        margin: 10px 30%;
+    }
+    
+    img{
+        margin: 3px 20px;
+    }
 }
