@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="listup_style.css">
+    <title>Listup!</title>
+</head>
+<body>
+    <h1>Add Elements To Your List!</h1>
+    <ul class="list-container" id="list-container">
+    </ul>
+
+    <br>
+    <div class="input-container">
+        <input type="text" id="new-item" value="" placeholder="Something...">
+        <button onclick="addToList()">ADD</button>
+        <button class="reload" id="reload" onclick="reloader()">CLEAR</button>
+    </div>
+
+    <script>
+        function addToList(){
+            var x = document.getElementById("new-item").value;
+            contents = document.getElementById("list-container").innerHTML;
+            contents += "\n"+"<li>"+x+"</li>";
+            document.getElementById("list-container").innerHTML = contents;
+            document.getElementById("new-item").value="";
+        }
+        function reloader(){
+            location.reload(true);
+        }
+    </script>
+</body>
+</html>
