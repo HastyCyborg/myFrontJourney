@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="ticstyle.css">
+</head>
+<body>
+    <h1 id="Headder">Have fun <br> Level: Ultra Easy</h1>
+    <br>
+    <div class="grid-container">
+        <img src="res/blank.png" alt="_image_" class="image" id="a1" onclick="activate('00 a1')">
+        <img src="res/blank.png" alt="_image_" class="image" id="a2" onclick="activate('01 a2')">
+        <img src="res/blank.png" alt="_image_" class="image" id="a3" onclick="activate('02 a3')">
+        <img src="res/blank.png" alt="_image_" class="image" id="b1" onclick="activate('10 b1')">
+        <img src="res/blank.png" alt="_image_" class="image" id="b2" onclick="activate('11 b2')">
+        <img src="res/blank.png" alt="_image_" class="image" id="b3" onclick="activate('12 b3')">
+        <img src="res/blank.png" alt="_image_" class="image" id="c1" onclick="activate('20 c1')">
+        <img src="res/blank.png" alt="_image_" class="image" id="c2" onclick="activate('21 c2')">
+        <img src="res/blank.png" alt="_image_" class="image" id="c3" onclick="activate('22 c3')">
+    </div>
+    <div class="move-text" id="move-text">
+        Your move first!
+    </div>
+</body>
+
+<script>
+    let finished = false;
+    let a = [
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ];
+    
+    function adversary(){
+        placed = false;
+        runtimes = 0;
+        while(!placed){
+            let rand1 = Math.floor(Math.random()*3);
+            let rand2 = Math.floor(Math.random()*3);
+
+            console.log('Run turn: ',runtimes+=1);
+
+            if(a[rand1][rand2]==0){
+                a[rand1][rand2]=2;
+
+                let index_letter,index_letter2;
+
+                if (rand1 == 0){index_letter="a";}
+                else if(rand1 == 1){index_letter="b";}
+                else if(rand1 == 2){index_letter="c";}
+                
+                if (rand2 == 0){index_letter2="1";}
+                else if(rand2 == 1){index_letter2="2";}
+                else if(rand2 == 2){index_letter2 = "3";}
+                
+                console.log(rand1,rand2);
+                console.log(index_letter + index_letter2);
+                
+                document.getElementById(index_letter + index_letter2).src = 'res/circle.png';
+                placed = true;
+                checkwin();
+            }
+        }
+    }
+
+    function checkwin(){
+        if ((a[0][0]==1 && a[0][1]==1 && a[0][2]==1) || (a[1][0]==1 && a[1][1]==1 && a[1][2]==1) || (a[2][0]==1 && a[2][1]==1 && a[2][2]==1) || (a[0][0]==1 && a[1][0]==1 && a[2][0]==1) || (a[0][1]==1 && a[1][1]==1 && a[2][1]==1) || (a[0][2]==1 && a[1][2]==1 && a[2][2]==1) || (a[0][0]==1 && a[1][1]==1 && a[2][2]==1) || (a[0][2]==1 && a[1][1]==1 && a[2][0]==1)){
+            console.log('Player wins');
+            document.getElementById("Headder").innerHTML = "You win!";
+            finished = true;
+            return true;
+        }
+        else if ((a[0][0]==2 && a[0][1]==2 && a[0][1]==2) || (a[1][0]==2 && a[1][1]==2 && a[1][1]==2) || (a[2][0]==2 && a[2][1]==2 && a[2][1]==2) || (a[0][0]==2 && a[1][0]==2 && a[2][0]==2) || (a[0][1]==2 && a[1][1]==2 && a[2][1]==2) || (a[0][2]==2 && a[1][2]==2 && a[2][2]==2) || (a[0][0]==2 && a[1][1]==2 && a[2][2]==2) || (a[0][2]==2 && a[1][1]==2 && a[2][0]==2)){
+            console.log('Comp wins');
+            document.getElementById("Headder").innerHTML = "You lost!";
+            finished = true;
+            return true;
+        }
+    }
+
+    function activate(text){
+        console.log("clicked",text);
+        document.getElementById("move-text").innerHTML = 'Go on...';
+        let index1 = parseInt(text[0]);
+        let index2 = parseInt(text[1]);
+        if(!finished){
+        document.getElementById(text[3]+text[4]).src = "res/cross.png";
+        a[index1][index2] = 1;
+        // console.log(a);
+        if(!checkwin()){
+            adversary();
+        }
+        }
+    }
+</script>
+
+</html>

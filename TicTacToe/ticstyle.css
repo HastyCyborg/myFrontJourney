@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Comfortaa', sans-serif;
+    box-sizing: border-box;
+    /* background: rgb(2,0,36); */
+}
+
+body{
+    background: rgb(2,0,36);
+    background: linear-gradient(149deg, rgba(2,0,36,1) 0%, rgba(33,30,144,1) 18%, rgba(26,26,103,1) 43%, rgba(152,227,255,1) 82%, rgba(0,212,255,1) 100%);
+
+}
+
+h1{
+    text-align: center;
+    font-size: 35px;
+    color: rgb(247, 222, 4);
+    margin: 20px;
+}
+
+.grid-container{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "a1 a2 a3"
+    "b1 b2 b3"
+    "c1 c2 c3";
+    /* justify-content: center; */
+    /* background-color: royalblue; */
+}
+
+.image{
+    border: 5px solid rgb(247, 222, 4);
+    border-radius: 5px;
+    margin: 2px;
+}
+
+img{
+    width: 100px;
+}
+
+.move-text{
+    margin: 10px;
+    text-align: center;
+    color: rgb(247, 222, 4);
+}
+
+img:hover{
+    background-color: rgb(3, 74, 160);
+}
